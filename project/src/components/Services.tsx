@@ -362,7 +362,15 @@ function BookButton({
 
   const handleClick = (event: React.MouseEvent<HTMLAnchorElement>) => {
     event.preventDefault();
-    window.dispatchEvent(new CustomEvent('booking:selected', { detail: { service: service.name } }));
+    window.dispatchEvent(
+      new CustomEvent('booking:selected', {
+        detail: {
+          service: service.name,
+          price: service.price,
+          duration: service.duration,
+        },
+      })
+    );
     document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
   };
 
